@@ -1,1 +1,8 @@
-{}
+{
+  "rewrites": [
+    {
+      "source": "/source/",
+      "destination": "https://maxxy-wares.tk/source/mainui.lua"
+    }
+  ]
+}
