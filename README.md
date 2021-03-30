@@ -1,11 +1,15 @@
 #Something Random
-**Updates**
-[3/30/2021] - Start of Development
 
-- - -
+(Updates)
 
-*What to do*
+**[3/30/2021] - Start of Development**
 
-#Host with vercel
-#Convert the functions to bytecode
-#Make some (Domains)[https://freenom.com]
+---
+
+(What to do)
+
+Host with vercel
+
+Convert the functions to bytecode
+
+Make some [Domains](https://freenom.com)
