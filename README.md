@@ -1,8 +1,6 @@
 # Name Is Currently Questioned
 
-> Source
-
-`loadstring("https://google.com")`
+> <code>loadstring("https://google.com")</code>
 
 ---
 
