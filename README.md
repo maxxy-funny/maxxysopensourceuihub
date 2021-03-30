@@ -1,6 +1,6 @@
 # Name Is Currently Questioned
 
-> <code>loadstring("https://google.com")</code>
+<code>loadstring("https://google.com")</code>
 
 ---
 
