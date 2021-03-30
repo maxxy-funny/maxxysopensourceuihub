@@ -2,7 +2,7 @@
 
 > Source
 
-- `loadstring()`
+`loadstring("https://google.com")`
 
 ---
 
