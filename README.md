@@ -6,6 +6,7 @@
 
 - [3/30/2021] - **Start of Development**
 - [3/30/2021] - **Hosted Web With Vercel**
+- [3/30/2021] - **Created a new domain**
 
 ---
 
@@ -13,6 +14,6 @@
 
 - [x] Host with vercel
 - [ ] Obfuscate is possible
-- [ ] Make some [Domains](https://freenom.com)
+- [x] Make some [Domains](https://google.com)
 - [ ] Whitelist
 - [x] Developers
