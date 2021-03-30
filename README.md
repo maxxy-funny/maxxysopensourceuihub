@@ -1,7 +1,5 @@
 # Name Is Currently Questioned
 
-<code>loadstring("https://google.com")</code>
-
 ---
 
 ### Updates
