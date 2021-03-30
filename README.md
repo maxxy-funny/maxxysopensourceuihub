@@ -1,15 +1,11 @@
-#Something Random#
-
-[(Updates)]
+##Updates
 
 **[3/30/2021] - Start of Development**
 
 ---
 
-[(What-to-do)]
+##What-to-do
 
-> 1.  Host with vercel
-
-> 2.  Convert the functions to bytecode
-
-> 3.  Make some [Domains](https://freenom.com)
+- [x] Host with vercel
+- [ ] Obfuscate is possible
+- [ ] Make some [Domains](https://freenom.com)
