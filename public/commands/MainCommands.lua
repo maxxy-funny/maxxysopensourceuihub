@@ -9,6 +9,23 @@ end
 function Temp:Nil(Player)
 
 end
+local notouchTouches = {}
+function Temp:notouch()
+
+	for i,v in pairs(workspace:GetDescendants()) do
+		if v:IsA("TouchTransmitter") then
+			table.insert(notouchTouches, {part = v.Parent, pare = v.Parent.Parent})
+			v.Parent.Parent = game:GetService("PolicyService")
+		end
+	end
+end
+
+function Temp:yestouch()
+	for i,v in pairs(notouchTouches) do
+		v.part.Parent = v.pare
+		table.remove(notuchTouches, i)
+	end
+end
 function Temp:Reanimate()
 	local sethiddenproperty = sethiddenproperty or set_hidden_prop
 	local setsimulationradius = setsimulationradius or set_simulation_radius

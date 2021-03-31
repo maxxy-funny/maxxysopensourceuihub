@@ -292,7 +292,18 @@ function init()
 	local Toggle = Animate:AddButton("Play Animation", function(toggle)
 		MaxxyCmds:PlayAnim(_G.Anim)
 	end)
+	local NoTouchy = Tab4:AddCategory("Interests")
+	local TouchInterest = NoTouchy:AddToggle("No Touch Interests", false, function(toggle)
+		if toggle == false then
+			pcall(function()
+				MaxxyCmds:yestouch()
+			end)
 
+		else
+			MaxxyCmds:notouch()
+
+		end
+	end)
 	--OUTPUT
 	local Outp = Tab6:AddCategory("Output")
 	game:getService("LogService").MessageOut:connect(function(output, messageType)
