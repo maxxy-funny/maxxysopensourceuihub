@@ -94,24 +94,10 @@ function init()
 	local DualLabel = GameData:AddDualLabel({"Place Id",game.PlaceId})
 	local DualLabel = GameData:AddDualLabel({"Job Id",game.JobId})
 	local DualLabel = GameData:AddDualLabel({"Exe Time",os.date("%c")})
-	 ServerFPS = GameData:AddSlider("S-FPS", 0, 0, 600, function(val)
+	
 
-	end)
-	 ClientFPS = GameData:AddSlider("C-FPS", 0, 0, 600, function(val)
+	
 
-	end)
-	PingSet = GameData:AddSlider("Ping", 0, 0, 1000, function(val)
-
-	end)
-	game:GetService("RunService").Heartbeat:Connect(function(fps2)
-		pcall(function()
-			local FPS = math.floor(1/fps2)
-			PingSet:Set(GetPing())
-			ServerFPS:Set(workspace:GetRealPhysicsFPS())
-			ClientFPS:Set(tostring(FPS))
-		end)
-
-	end)
 
 	--INPUT
 
@@ -210,15 +196,17 @@ function init()
 			MMusic.Looped=true
 		end
 	end)
+
 	local Toggle = Radio:AddToggle("Playing", false, function(toggle)
 		if toggle == false then
 			MMusic:Pause()
-
+			
 		else
-
+		
 			MMusic:Play()
 		end
 	end)
+	
 	local Mixer = Tab5:AddCategory("Mixer")
 	local EQ = Instance.new("EqualizerSoundEffect",MMusic)
 	local Loop = Mixer:AddToggle("Enabled", false, function(toggle)
@@ -298,7 +286,7 @@ function init()
 	end)
 
 	local Animate = Tab4:AddCategory("Re-Animation")
-	local UhOh = Chatting:AddBox("AnimID", function(str)
+	local UhOh = Animate:AddBox("AnimID", function(str)
 		_G.Anim = str
 	end)
 	local Toggle = Animate:AddButton("Play Animation", function(toggle)
