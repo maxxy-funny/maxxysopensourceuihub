@@ -45,6 +45,12 @@ pcall(function()
 
 end)
 
+function GetPing()
+	local Start = tick()
+
+	local ping = tick()-Start
+	return math.floor(ping*1000+.5)
+end
 function init()
 
 
@@ -83,43 +89,30 @@ function init()
 
 		end
 	end)
-	
-	local function GetPing()
-		local Send = tick()
-		local Ping = nil
 
-
-
-		local Receive; Receive = game:GetService("RunService").Renderstepped:Connect(function()
-			Ping = tick() - Send 
-		end)
-
-		wait(1)
-
-		Receive:Disconnect()
-
-		return Ping or 999
-	end
 	local GameData = UserData:AddCategory("Game Data")
 	local DualLabel = GameData:AddDualLabel({"Place Id",game.PlaceId})
 	local DualLabel = GameData:AddDualLabel({"Job Id",game.JobId})
 	local DualLabel = GameData:AddDualLabel({"Exe Time",os.date("%c")})
-	local ServerFPS = GameData:AddSlider("S-FPS", 0, 0, 60, function(val)
+	 ServerFPS = GameData:AddSlider("S-FPS", 0, 0, 600, function(val)
 
 	end)
-	local ClientFPS = GameData:AddSlider("C-FPS", 0, 0, 60, function(val)
+	 ClientFPS = GameData:AddSlider("C-FPS", 0, 0, 600, function(val)
 
 	end)
-	game:GetService("RunService").RenderStepped:Connect(function(TimeBetween)
+	PingSet = GameData:AddSlider("Ping", 0, 0, 1000, function(val)
+
+	end)
+	game:GetService("RunService").Heartbeat:Connect(function(fps2)
 		pcall(function()
-		local FPS = math.floor(1 / TimeBetween)
-
-		ServerFPS:Set(workspace:GetRealPhysicsFPS())
+			local FPS = math.floor(1/fps2)
+			PingSet:Set(GetPing())
+			ServerFPS:Set(workspace:GetRealPhysicsFPS())
 			ClientFPS:Set(tostring(FPS))
-			end)
+		end)
 
 	end)
-	
+
 	--INPUT
 
 
