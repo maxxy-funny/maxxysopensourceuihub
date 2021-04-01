@@ -5,7 +5,7 @@ pcall(function()
 	Char = Plr.Character
 	Hum = Char.Humanoid
 end)
-
+--s
 _G.dontTween = false
 _G.dragVars = {}
 _G.connections = {}
