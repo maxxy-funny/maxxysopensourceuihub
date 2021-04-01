@@ -55,12 +55,10 @@ function init()
 
 
 	local Tab3 = Gui:AddTab("Player")
-	local Tab9 = Gui:AddTab("Exploitables")
-	local GameDet = Gui:AddTab("Scripts")
+	local PlayerAbuse = Gui:AddTab("Abuse")
 
-	local Tab4 = Gui:AddTab("Maxxy Admin")
-
-	local Tab8 = Gui:AddTab("Game")
+	local Tab4 = Gui:AddTab("Scripts")
+	local Tab8 = Gui:AddTab("Environment")
 	local UserData = Gui:AddTab("Data")
 	local Tab5 = Gui:AddTab("Music")
 	local Tab6 = Gui:AddTab("Output")
@@ -78,7 +76,7 @@ function init()
 	local DualLabel = Data:AddDualLabel({"Display Name",Hum.DisplayName})
 	pcall(function()
 		if syn == nil then
-			Notification([[YOU STUPID FUCK BUY SYNAPSE YOU CHEAP CUNT
+			notify([[YOU STUPID FUCK BUY SYNAPSE YOU CHEAP CUNT
     FUCK YOU
     STOP USING MY WARES]])
 			local DualLabel = Data:AddDualLabel({"Exploit","Possibly KRNL"})
@@ -101,11 +99,24 @@ function init()
 
 	--INPUT
 
+	
 
+	local PlayerList = PlayerAbuse:AddCategory("PlayerList")
+	local plist = PlayerList:AddDropdown("Players", {}, function(name)
+		print(name)
+	end)
+	for fuck,you in pairs(game:GetService("Players"):GetChildren()) do
+		plist:AddItem(you.Name)
 
+	end
 
+	game.Players.PlayerAdded:Connect(function(plr) --When player joins the game
+		plist:AddItem(plr.Name)
+	end)
 
-
+	game.Players.PlayerRemoving:Connect(function(plr) --When player joins the game
+		plist:RemoveItem(plr.Name)
+	end)
 
 
 	--MISC
@@ -304,6 +315,62 @@ function init()
 
 		end
 	end)
+
+		--Sound Spam
+		local Amogus = Tab4:AddCategory("RespectFiltering")
+		local Button = Amogus:AddButton("Play All Sounds", function()
+			if game.SoundService.RespectFilteringEnabled == false then
+				for i,v in pairs(game.Workspace:GetDescendants()) do
+					if v:IsA("Sound") then
+						v:Play()
+					end
+				end
+				notify("Successfully Played All Sounds",false)
+			else
+				notify("RespectFiltering is Enabled. (Wont Work)",false)
+			end
+		end)
+			--Game Sense
+	local GameSense = Tab4:AddCategory("Game Sense")
+	local Button = GameSense:AddButton("Check Game", function()
+		notify("Checking Game")
+		wait(2)
+		--Among Us
+		if game.PlaceId==621129760 then
+			notify("Detected Game: KAT [LOADED SILENT AIM]",false)
+			loadstring(game:HttpGet("https://flushed-exe.tk/games/kat.lua"))()
+		elseif game.PlaceId == 142823291 then
+			notify("Detected Game: MM2 [LOADED C-VINE] (Credit To ExobyteXL)",false)
+			loadstring(game:HttpGet("https://flushed-exe.tk/games/c-vine.lua"))()
+		else
+			notify("Game Not Found "..game.PlaceId,false)
+		end
+	end)
+	--Scripts
+	local Scripts = Tab4:AddCategory("Scripts")
+	local Button = Scripts:AddButton("Silent Aim", function()
+		notify("Loading GUI")
+		loadstring(game:HttpGet("https://flushed-exe.tk/scripts/silent-aim.lua"))()
+
+	end)
+	--Abuse
+	local Abse = Tab4:AddCategory("Abuse")
+	local Fling = Abse:AddToggle("Fling", false, function(toggle)
+		if toggle == false then
+			pcall(function()
+				die:Destroy()
+			end)
+
+		else
+			notify("Flinging (May bug out)")
+			local die = Instance.new("BodyAngularVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+			die.Name = math.random(1,999999)
+			die.AngularVelocity = Vector3.new(0,311111,0)
+			die.MaxTorque = Vector3.new(0,311111,0)
+			die.P = math.huge
+		end
+	end)
+
 	--OUTPUT
 	local Outp = Tab6:AddCategory("Output")
 	game:getService("LogService").MessageOut:connect(function(output, messageType)
@@ -346,62 +413,9 @@ function init()
 		end
 	end)
 
-	--Sound Spam
-	local Amogus = Tab9:AddCategory("RespectFiltering")
-	local Button = Amogus:AddButton("Play All Sounds", function()
-		if game.SoundService.RespectFilteringEnabled == false then
-			for i,v in pairs(game.Workspace:GetDescendants()) do
-				if v:IsA("Sound") then
-					v:Play()
-				end
-			end
-			notify("Successfully Played All Sounds",false)
-		else
-			notify("RespectFiltering is Enabled. (Wont Work)",false)
-		end
-	end)
 
 
-	--Game Sense
-	local GameSense = GameDet:AddCategory("Game Sense")
-	local Button = GameSense:AddButton("Check Game", function()
-		notify("Checking Game")
-		wait(2)
-		--Among Us
-		if game.PlaceId==621129760 then
-			notify("Detected Game: KAT [LOADED SILENT AIM]",false)
-			loadstring(game:HttpGet("https://flushed-exe.tk/games/kat.lua"))()
-		elseif game.PlaceId == 142823291 then
-			notify("Detected Game: MM2 [LOADED C-VINE] (Credit To ExobyteXL)",false)
-			loadstring(game:HttpGet("https://flushed-exe.tk/games/c-vine.lua"))()
-		else
-			notify("Game Not Found "..game.PlaceId,false)
-		end
-	end)
-	--Scripts
-	local Scripts = GameDet:AddCategory("Scripts")
-	local Button = Scripts:AddButton("Silent Aim", function()
-		notify("Loading GUI")
-		loadstring(game:HttpGet("https://flushed-exe.tk/scripts/silent-aim.lua"))()
 
-	end)
-	--Abuse
-	local Abse = GameDet:AddCategory("Abuse")
-	local Fling = Abse:AddToggle("Fling", false, function(toggle)
-		if toggle == false then
-			pcall(function()
-				die:Destroy()
-			end)
-
-		else
-			notify("Flinging (May bug out)")
-			local die = Instance.new("BodyAngularVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
-			die.Name = math.random(1,999999)
-			die.AngularVelocity = Vector3.new(0,311111,0)
-			die.MaxTorque = Vector3.new(0,311111,0)
-			die.P = math.huge
-		end
-	end)
 
 
 
