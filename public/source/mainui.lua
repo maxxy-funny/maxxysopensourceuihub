@@ -218,16 +218,7 @@ local HTTP = {}
 
 
 
-pcall(function()
-	syn.queue_on_teleport([[ wait(3)
-	_G.Color=BrickColor.new("Persimmon").Color
-	_G.KeyBind=Enum.KeyCode.RightControl
-		loadstring(game:HttpGet("https://maxxy-wares.tk/source/mainui.lua"))()
-		pcall(function() notify("Reloaded.")end)]])
 
-
-
-end)
 
 function GetPing()
 	local Start = tick()
@@ -355,7 +346,7 @@ function init()
 
 	--Rejoin/Shop
 	local ServerWise = Tab3:AddCategory("Rejoin")
-
+	
 
 
 	local Button = ServerWise:AddButton("Rejoin", function()
@@ -364,6 +355,24 @@ function init()
 		local p = game:GetService("Players").LocalPlayer
 		ts:Teleport(game.PlaceId, p)
 	end)
+		local RejoinExe = ServerWise:AddButton("Rejoin Execute (Synapse)", function()
+			pcall(function()
+				syn.queue_on_teleport([[ wait(3)
+				_G.Color=BrickColor.new("Persimmon").Color
+				_G.KeyBind=Enum.KeyCode.RightControl
+					loadstring(game:HttpGet("https://maxxy-wares.tk/source/mainui.lua"))()
+					pcall(function() notify("Reloaded.")end)]])
+			
+			
+			
+			end)
+			notify("Rejoining In 4 Seconds")
+			wait(4)
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
+		ts:Teleport(game.PlaceId, p)
+
+end)
 	local Button = ServerWise:AddButton("Server Hop", function()
 		local HttpService, TPService = game:GetService("HttpService"), game:GetService("TeleportService")
 		local ServersToTP = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
