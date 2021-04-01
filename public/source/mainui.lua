@@ -5,6 +5,10 @@ pcall(function()
 	Char = Plr.Character
 	Hum = Char.Humanoid
 end)
+
+_G.dontTween = false
+_G.dragVars = {}
+_G.connections = {}
 --shit parts
 local MaxxyCmds = {}
 local LPlayer = game:GetService("Players").LocalPlayer
@@ -298,7 +302,23 @@ function init()
 		plist:RemoveItem(plr.Name)
 	end)
 
+	--Abuse
+	local Abse = PlayerAbuse:AddCategory("Abuse")
+	local Fling = Abse:AddToggle("Fling", false, function(toggle)
+		if toggle == false then
+			pcall(function()
+				die:Destroy()
+			end)
 
+		else
+			notify("Flinging (May bug out)")
+			local die = Instance.new("BodyAngularVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+			die.Name = math.random(1,999999)
+			die.AngularVelocity = Vector3.new(0,311111,0)
+			die.MaxTorque = Vector3.new(0,311111,0)
+			die.P = math.huge
+		end
+	end)
 	--MISC
 	local SETTINGS = Gui:AddTab("Settings")
 	local MiscSet = SETTINGS:AddCategory("GUI")
@@ -476,14 +496,13 @@ function init()
 
 	end)
 
-	local Animate = Tab4:AddCategory("Re-Animation")
-	local UhOh = Animate:AddBox("AnimID", function(str)
+	local UhOh = Network:AddBox("AnimID", function(str)
 		_G.Anim = str
 	end)
-	local Toggle = Animate:AddButton("Play Animation", function(toggle)
+	local Toggle = Network:AddButton("Play Animation", function(toggle)
 		MaxxyCmds:PlayAnim(_G.Anim)
 	end)
-	local NoTouchy = Tab4:AddCategory("Interests")
+	local NoTouchy = Tab4:AddCategory("Exploitables")
 	local TouchInterest = NoTouchy:AddToggle("No Touch Interests", false, function(toggle)
 		if toggle == false then
 			pcall(function()
@@ -497,8 +516,7 @@ function init()
 	end)
 
 		--Sound Spam
-		local Amogus = Tab4:AddCategory("RespectFiltering")
-		local Button = Amogus:AddButton("Play All Sounds", function()
+		local Button = NoTouchy:AddButton("Play All Sounds", function()
 			if game.SoundService.RespectFilteringEnabled == false then
 				for i,v in pairs(game.Workspace:GetDescendants()) do
 					if v:IsA("Sound") then
@@ -511,7 +529,7 @@ function init()
 			end
 		end)
 			--Game Sense
-	local GameSense = Tab4:AddCategory("Game Sense")
+	local GameSense = Tab4:AddCategory("Scripts")
 	local Button = GameSense:AddButton("Check Game", function()
 		notify("Checking Game")
 		wait(2)
@@ -527,29 +545,12 @@ function init()
 		end
 	end)
 	--Scripts
-	local Scripts = Tab4:AddCategory("Scripts")
-	local Button = Scripts:AddButton("Silent Aim", function()
+	local Button = GameSense:AddButton("Silent Aim", function()
 		notify("Loading GUI")
 		loadstring(game:HttpGet("https://flushed-exe.tk/scripts/silent-aim.lua"))()
 
 	end)
-	--Abuse
-	local Abse = Tab4:AddCategory("Abuse")
-	local Fling = Abse:AddToggle("Fling", false, function(toggle)
-		if toggle == false then
-			pcall(function()
-				die:Destroy()
-			end)
 
-		else
-			notify("Flinging (May bug out)")
-			local die = Instance.new("BodyAngularVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
-			die.Name = math.random(1,999999)
-			die.AngularVelocity = Vector3.new(0,311111,0)
-			die.MaxTorque = Vector3.new(0,311111,0)
-			die.P = math.huge
-		end
-	end)
 
 	--OUTPUT
 	local Outp = Tab6:AddCategory("Output")
