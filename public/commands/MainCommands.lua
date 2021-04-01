@@ -1,14 +1,6 @@
 local Temp = {}
 local LPlayer = game:GetService("Players").LocalPlayer
-function Temp:Fly(Player)
 
-end
-function Temp:Chat(Player)
-
-end
-function Temp:Nil(Player)
-
-end
 local notouchTouches = {}
 function Temp:notouch()
 

@@ -11,6 +11,7 @@ loadstring("https")
 - [3/30/2021] - **Start of Development**
 - [3/30/2021] - **Hosted Web With Vercel**
 - [3/30/2021] - **Created a new domain**
+- [3/31/2021] - **Deleted multiple useless tabs; Added a ping check**
 
 ---
 
@@ -19,5 +20,5 @@ loadstring("https")
 - [x] Host with vercel
 - [ ] Obfuscate is possible
 - [x] Make some [Domains](https://google.com)
-- [ ] Whitelist
+- [x] Whitelist
 - [x] Developers
