@@ -5,7 +5,7 @@ pcall(function()
 	Char = Plr.Character
 	Hum = Char.Humanoid
 end)
---shit part
+--shit parts
 local MaxxyCmds = {}
 local LPlayer = game:GetService("Players").LocalPlayer
 
