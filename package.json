@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "/index.jpg",
-  "dependencies": {}
+  "main": "MainPage.html",
+  "dependencies": {
+    "axios": "0.21.1"
+  }
 }
